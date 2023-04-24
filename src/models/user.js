@@ -3,13 +3,11 @@ let user = new mongoose.Schema({
     FirstName:{
         type:String,
         required: true,
-        minLength:[6,'Tên phải có độ dài tối thiểu là 6'],
         maxLength:255
     },
     LastName:{
         type:String,
         required: true,
-        minLength:[6,'Tên phải có độ dài tối thiểu là 6'],
         maxLength:255
     },
     tel: {
@@ -26,13 +24,11 @@ let user = new mongoose.Schema({
     UserName:{
         type:String,
         required: true,
-        minLength:[6,'User phải có độ dài tối thiểu là 6'],
         maxLength:255
     },
     PassWord:{
         type:String,
         required: true,
-        minLength:[6],
         maxLength:255
     }
 });
