@@ -272,7 +272,7 @@ $(document).ready(function(){
 						</div>
 						<div class="col-xs-6">
 							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
-							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+							<a href="/home/login" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Login User</span></a>						
 						</div>
 					</div>
 				</div>
@@ -309,10 +309,12 @@ $(document).ready(function(){
 							<td><%=items.UserName%></td>
 							<td>
 								<!-- <form action="/home/edit-student/<%=items._id%>" method="get"> --> 
-									<a href="/home/showedit/<%=items._id%>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+									<!-- <a href="/home/showedit/<%=items._id%>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> -->
 									<!-- <button type="submit"><a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></button> -->
 								<!-- </form> -->
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+								<form action="/home/delete-user/<%= items._id%>" method="post">
+									<button onclick="return confirm('Bạn chắc chắn muốn xóa <%= item.name %>?')" type="submit" class="btn btn-outline-danger">Delete</button>
+								</form>
 							 </td> 
 						 </tr> 
 						 <% })%>

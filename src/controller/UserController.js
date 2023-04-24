@@ -31,5 +31,26 @@ class UserController {
         console.log("fail!!!", err);
       });
   }
+
+  // delete user
+  deleteuser(req,res){
+    let id = req.params.id;
+    console.log(id);
+    user.findByIdAndDelete(id)
+        .then(rs=>res.redirect("/home"))
+        .catch(err=>res.send(err));
+};
+  // Login User
+  Login(req , res){
+    res.render('login');
+  }
+ async loginUsers(req , res){
+  console.log("da log duoc vao ham");
+    let existUser = await user.findOne({UserName: req.body.UserName});
+    if(!existUser) return res.status(401).send("Email or password is not correct");
+    const checkPassword = await bcrypt.compare(req.body.PassWord,existUser.PassWord);
+    if(!checkPassword) return res.status(401).send("Email or password is not correct");
+    res.redirect('/home');
+  }
 }
 module.exports = new UserController();
